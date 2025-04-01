@@ -23,12 +23,12 @@ public class PassportController {
     public JsonResult usernameIsExist(@RequestParam String username) {
 
         if (StringUtils.isBlank(username)) {
-            return JsonResult.failed(ResponseStatusEnum.USERNAME_NOT_BLANK);
+            return new JsonResult(ResponseStatusEnum.USERNAME_NOT_BLANK);
         }
 
         boolean isExist = usersService.queryUsernameIsExist(username);
         if (isExist) {
-            return JsonResult.failed(ResponseStatusEnum.USERNAME_EXIST);
+            return new JsonResult(ResponseStatusEnum.USERNAME_EXIST);
         }
         return JsonResult.ok();
     }
